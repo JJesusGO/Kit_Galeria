@@ -46,13 +46,13 @@ namespace Galeria{
         private EntidadPosicion derecha = null;
         [Header("Eventos")]
         [SerializeField]
-        private UnityEvent []eventosalmacen = null;
+        private UnityEvent eventosalmacen = null;
         [SerializeField]
-        private UnityEvent []eventosentrada = null;
+        private UnityEvent eventosentrada = null;
         [SerializeField]
-        private UnityEvent []eventossalida = null;
+        private UnityEvent eventossalida = null;
         [SerializeField]
-        private UnityEvent []eventosexhibidor = null;
+        private UnityEvent eventosexhibidor = null;
 
         private EntidadGaleriaEstado estado = EntidadGaleriaEstado.ALMACEN;
         private EntidadGaleriaDireccion direccion = EntidadGaleriaDireccion.DESCONOCIDO;
@@ -179,27 +179,22 @@ namespace Galeria{
         private void ActivarAlmacen(){
             if (eventosalmacen == null)
                 return;
-            for (int i = 0; i < eventosalmacen.Length; i++)
-                eventosalmacen[i].Invoke();
+            eventosalmacen.Invoke();
         }
         private void ActivarEntrada(){
             if (eventosentrada == null)
                 return;
-            for (int i = 0; i < eventosentrada.Length; i++)
-                eventosentrada[i].Invoke();
+            eventosentrada.Invoke();
         }
         private void ActivarSalida(){
             if (eventossalida == null)
                 return;
-            for (int i = 0; i < eventossalida.Length; i++)
-                eventossalida[i].Invoke();
-
+            eventossalida.Invoke();
         }
         private void ActivarExhibidor(){
             if (eventosexhibidor == null)
                 return;
-            for (int i = 0; i < eventosexhibidor.Length; i++)
-                eventosexhibidor[i].Invoke();
+            eventosexhibidor.Invoke();
         }
             
         public void     SetEstado(EntidadGaleriaEstado estado,EntidadGaleriaDireccion direccion,bool forzar = false){
@@ -243,6 +238,10 @@ namespace Galeria{
             return transform.position;
         }
       
+        public void BotonSeleccionar(){
+            if (estado != EntidadGaleriaEstado.EXHIBIDA)
+                galeria.BotonSeleccionar(this);
+        }
         public void AnimacionSetControl(bool control){
             this.control = control;
         }

@@ -16,11 +16,13 @@ namespace Galeria{
     }
     public class ManagerAplicacion : MonoBehaviour{
 
+        [Header("Eventos")]
+        [SerializeField]
+        private UnityEvent eventoinicioaplicacion = null;
         [Header("Audio")]
         [SerializeField]
         private AudioPerfil []perfiles = null;
-        [Header("Eventos")]
-        private UnityEvent []eventoinicioaplicacion = null;
+
 
         public static ManagerAplicacion instanciabase;
 
@@ -34,9 +36,9 @@ namespace Galeria{
         }
 
         private void ActivarInicioAplicacion(){
-            if(eventoinicioaplicacion!=null)
-                for (int i = 0; i < eventoinicioaplicacion.Length; i++)
-                    eventoinicioaplicacion[i].Invoke();
+            if (eventoinicioaplicacion == null)
+                return;
+            eventoinicioaplicacion.Invoke();
         }
 
         public Audio PlayAudio(string perfil,AudioClip clip, Vector3 posicion){            
