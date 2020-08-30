@@ -23,7 +23,6 @@ namespace Galeria{
         [SerializeField]
         private AudioPerfil []perfiles = null;
 
-
         public static ManagerAplicacion instanciabase;
 
         private void Awake(){

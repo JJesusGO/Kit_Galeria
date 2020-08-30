@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 namespace Galeria{
@@ -9,6 +10,8 @@ namespace Galeria{
         [Tooltip("Velocidad de ajuste a la posición.")]
         [SerializeField]
         private float velocidadLineal = 12;
+        [Tooltip("Distancia minima que debe existir entra la entidad y la posición para ser detectada.")]
+        private float precisionDeteccion = 0.01f;
         [Header("Rotación")]
         [Tooltip("Velocidad de ajuste a la rotación.")]
         [SerializeField]
@@ -17,7 +20,14 @@ namespace Galeria{
         [Tooltip("Sensibilidad del mouse.")]
         [SerializeField]
         private float sensibilidad = 2.0f;
-       
+        [Header("Eventos")]
+        [SerializeField]
+        private UnityEvent eventoentrada = null;
+        [SerializeField]
+        private UnityEvent eventosalida = null;
+
+        private bool elemento = true;
+
         private EntidadGaleria  entidad = null;
         private Temporizador temporizador = null;
 
@@ -47,8 +57,14 @@ namespace Galeria{
             else
                 temporizador.Reset();
             
+            if (!elemento){            
+                if (entidad != null)
+                    if (IsPosicion(entidad)){
+                        elemento = true;
+                        ActivarEntrada();
+                    }                                   
+            }
 
-        
         }
 
         public void ActivarTrigger(string nombre){
@@ -57,6 +73,17 @@ namespace Galeria{
             if(entidad.GetAnimador()==null)
                 return;
             entidad.GetAnimador().ActivarTrigger(nombre);
+        }
+
+        private void ActivarEntrada(){
+            if (eventoentrada == null)
+                return;
+            eventoentrada.Invoke();        
+        }
+        private void ActivarSalida(){
+            if (eventosalida == null)
+                return;
+            eventosalida.Invoke();        
         }
 
         public void           SetEntidadGaleria(EntidadGaleria entidad,EntidadGaleriaDireccion entrada){
@@ -70,13 +97,19 @@ namespace Galeria{
                     break;
             }
             if (entidad == null){
-                if (this.entidad != null)
-                    this.entidad.SetEstado(EntidadGaleriaEstado.SALIDA,salida);                
+                if (this.entidad != null){
+                    this.entidad.SetEstado(EntidadGaleriaEstado.SALIDA, salida); 
+                    elemento = false;
+                    ActivarSalida();
+                }
                 this.entidad = entidad;
             }
             else{
-                if (this.entidad != null)
-                    this.entidad.SetEstado(EntidadGaleriaEstado.SALIDA,salida);                
+                if (this.entidad != null){
+                    this.entidad.SetEstado(EntidadGaleriaEstado.SALIDA, salida);  
+                    elemento = false;
+                    ActivarSalida();
+                }
                 this.entidad = entidad;
                 this.entidad.SetEstado(EntidadGaleriaEstado.ENTRADA,entrada);
             }
@@ -104,6 +137,11 @@ namespace Galeria{
         }
         public EntidadGaleriaDireccion GetSalida(){
             return salida;
+        }
+
+        public bool       IsPosicion(EntidadGaleria entidad){
+            Vector3 distancia = transform.position - entidad.GetPosicion();
+            return distancia.magnitude <= precisionDeteccion;                
         }
 
     }
