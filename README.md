@@ -1,6 +1,6 @@
 ﻿# ToolKit - Galeria
 
-- Este es el un kit basico para el desarrollo de aplicaciones multimedia interactivas utilizando [Unity](https://unity.com/es)
+- Este un toolkit para el desarrollo de una galeria 3D utilizando [Unity](https://unity.com/es)
 
 # Descargas
 
