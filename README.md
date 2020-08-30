@@ -4,7 +4,7 @@
 
 # Descargas
 
-- [KitBasico 1.0f0](https://raw.githubusercontent.com/TheReaperScythe/Kit_Basico/master/Versiones/ToolKit_Galeria_1_0f0.unitypackage)
+- [ToolKit-Galeria 1.0f0](https://raw.githubusercontent.com/TheReaperScythe/Kit_Galeria/master/Versiones/ToolKit_Galeria_1_0f0.unitypackage)
 
 # Retroalimentacion/Reporte de Bugs
 
