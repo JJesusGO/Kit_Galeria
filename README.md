@@ -1,4 +1,4 @@
-﻿# KitBasico
+﻿# ToolKit - Galeria
 
 - Este es el un kit basico para el desarrollo de aplicaciones multimedia interactivas utilizando [Unity](https://unity.com/es)
 
