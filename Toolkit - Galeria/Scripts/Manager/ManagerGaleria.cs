@@ -27,14 +27,14 @@ namespace Galeria{
         }
 
         public void SetSeleccion(int index,EntidadGaleriaDireccion entrada){
-            if (index >= entidades.Length)
+            if (index >= entidades.Length || index < 0)
                 return;
             seleccion = index;
             exhibidor.SetEntidadGaleria(entidades[seleccion],entrada);
         }
         public void SetSeleccion(EntidadGaleria entidad,EntidadGaleriaDireccion entrada){
             for (int i = 0; i < entidades.Length; i++)
-                if (this.entidades[i] == entidad)
+                if (entidades[i] == entidad)
                     SetSeleccion(i,entrada);
         }
 

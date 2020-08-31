@@ -26,7 +26,7 @@ namespace Galeria{
         [SerializeField]
         private UnityEvent eventosalida = null;
 
-        private bool elemento = true;
+        private bool elemento = false;
 
         private EntidadGaleria  entidad = null;
         private Temporizador temporizador = null;
