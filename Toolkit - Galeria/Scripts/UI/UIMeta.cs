@@ -4,6 +4,7 @@ using TMPro;
 
 namespace Galeria{
 
+
     public class UIMeta : MonoBehaviour{
 
         [Header("Configuración")]
