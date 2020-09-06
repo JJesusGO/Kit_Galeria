@@ -5,7 +5,8 @@
 # Descargas
 - [ToolKit-Galeria 1.1f0](https://raw.githubusercontent.com/TheReaperScythe/Kit_Galeria/master/Versiones/ToolKit_Galeria_1_1f0.unitypackage)
 
-    * Agregado *UIMetaIndicador* para sistemas de ranking y selección.
+    - Agregado *UIMetaIndicador* para sistemas de ranking y selección.
+    - Eliminados todos los *Warnings* de estructuras privadas.
     
 - [ToolKit-Galeria 1.0f0](https://raw.githubusercontent.com/TheReaperScythe/Kit_Galeria/master/Versiones/ToolKit_Galeria_1_0f0.unitypackage)
 
