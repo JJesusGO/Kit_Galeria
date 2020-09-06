@@ -6,10 +6,12 @@ namespace Galeria{
 
     [System.Serializable]
     public struct Metadata{
+        #pragma warning disable CS0649
         [SerializeField]
         private string nombre;
         [SerializeField]
         private string contenido;
+        #pragma warning restore CS0649
 
         public string GetNombre(){
             return nombre;

@@ -6,12 +6,15 @@ namespace Galeria{
 
     [System.Serializable]
     public struct Entrada{
+        #pragma warning disable CS0649
         [SerializeField]
         private string nombre;
         [SerializeField]
         private Tecla tecla;
         [SerializeField]
         private UnityEvent []eventos;
+        #pragma warning restore CS0649
+
 
         public string GetNombre(){
             return nombre;

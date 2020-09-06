@@ -8,12 +8,22 @@ namespace Galeria{
     [System.Serializable]
     public struct AudioPerfil{
         [SerializeField]
-        public Transform carpeta;
-        [SerializeField]
         public string nombre;
+        [SerializeField]
+        public Transform carpeta;
         [SerializeField]
         public Audio  prefab;
     }
+    [System.Serializable]
+    public struct ClipPerfil
+    {
+  
+        [SerializeField]
+        public string nombre;
+        [SerializeField]
+        public AudioClip audio;
+    }
+
     public class ManagerAplicacion : MonoBehaviour{
 
         [Header("Eventos")]
@@ -22,6 +32,8 @@ namespace Galeria{
         [Header("Audio")]
         [SerializeField]
         private AudioPerfil []perfiles = null;
+        [SerializeField]
+        private ClipPerfil[] clips = null;
 
         public static ManagerAplicacion instanciabase;
 
@@ -40,18 +52,45 @@ namespace Galeria{
             eventoinicioaplicacion.Invoke();
         }
 
-        public Audio PlayAudio(string perfil,AudioClip clip, Vector3 posicion){            
+        public void PlayAudio(string codigo)
+        {
+
+            string[] data = codigo.Split('_');
+
+            if (data.Length < 2)
+                return;
+
+            string perfil = data[0],
+                     clip = data[1];
+
+
+            AudioClip sonido = null;
+            for (int i = 0; i < clips.Length; i++)
+                if (clip == clips[i].nombre) {
+                    sonido = clips[i].audio;
+                    break;
+                }            
+
             for (int i = 0; i < perfiles.Length; i++)
                 if (perfil == perfiles[i].nombre)
-                    return PlayAudio(i, clip, posicion);
-            return null;
-        }
-        public Audio PlayAudio(int perfil,AudioClip clip, Vector3 posicion){
-            Audio audio = perfiles[perfil].prefab;
-            audio.Create(clip,perfiles[perfil].carpeta,posicion);
-            return audio;
+                {
+                    PlayAudio(i, sonido, transform.position);
+                    break;
+                }
         }
 
+        public void PlayAudio(string perfil, AudioClip clip, Vector3 posicion)
+        {
+            for (int i = 0; i < perfiles.Length; i++)
+                if (perfil == perfiles[i].nombre) { 
+                   PlayAudio(i, clip, posicion);
+                    break;
+                }   
+        }
+        public void PlayAudio(int perfil,AudioClip clip, Vector3 posicion){
+            Audio audio = perfiles[perfil].prefab;
+            audio.Create(clip,perfiles[perfil].carpeta,posicion);
+        }
         public static ManagerAplicacion GetInstanciaBase(){
             if (instanciabase == null)
                 instanciabase = GameObject.FindObjectOfType<ManagerAplicacion>();
