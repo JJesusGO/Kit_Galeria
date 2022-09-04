@@ -12,4 +12,4 @@
 
 # Retroalimentacion/Reporte de Bugs
 
-- En caso de detectar fallas o errores en la implementación del código, favor de enviar mensaje al correo *thereaperscythe@hotmail.com*, con el asunto *DMI_Apellidos*. Las respuestas se darán en un periodo de 2 a 3 días máximo.
+- En caso de detectar fallas o errores en la implementación del código, favor de enviar mensaje al correo *jdj.gutierrezornelas@hotmail.com*, con el asunto *DMI_Apellidos*. Las respuestas se darán en un periodo de 2 a 3 días máximo.
