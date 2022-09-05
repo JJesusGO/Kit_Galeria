@@ -26,6 +26,11 @@ namespace Galeria{
 
         }
 
+        public void BotonSetEnable(bool enable)
+        {
+            this.enable = enable;
+        }
+
         public void SetEnable(bool enable,bool forzar = false){
 
             if (this.enable == enable && !forzar)

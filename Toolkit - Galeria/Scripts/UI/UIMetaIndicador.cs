@@ -29,13 +29,20 @@ namespace Galeria{
                 else
                     return null;
             }
+            if (sprites.Length == 2)
+            {
+                if (valor > 0.5)
+                    return sprites[1];
+                else
+                    return sprites[0];
+            }
 
             if (valor >= 1)
                 return sprites[sprites.Length-1];
             if (valor <= 0)
                 return sprites[0];
             
-            int n = sprites.Length - 1;
+            int n = sprites.Length - 2;
 
             float secciones = 1.0f / n;
             float sumatoria = secciones;
