@@ -3,6 +3,11 @@
 - Este un toolkit para el desarrollo de una galeria 3D utilizando [Unity](https://unity.com/es)
 
 # Descargas
+- [ToolKit-Galeria 1.1f1](https://raw.githubusercontent.com/TheReaperScythe/Kit_Galeria/master/Versiones/ToolKit_Galeria_1_1f1.unitypackage)
+
+    - Arreglando *UIMetaIndicador* para calcular mejor los rankings.
+    - Agregando evento para boton al UIPanel.
+
 - [ToolKit-Galeria 1.1f0](https://raw.githubusercontent.com/TheReaperScythe/Kit_Galeria/master/Versiones/ToolKit_Galeria_1_1f0.unitypackage)
 
     - Agregado *UIMetaIndicador* para sistemas de ranking y selección.
